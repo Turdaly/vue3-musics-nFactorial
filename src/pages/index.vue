@@ -9,11 +9,14 @@
           @search="fetchMusic"
         />
       </div>
-      <div class="flex" v-if="currentAccountName.length">
-        <img src="../assets/avatar2.png" alt="Avatar" class="w-8 h-8 rounded-full mr-1">
-        <p class="text-base mr-10">{{ currentAccountName }}</p>
+      <div class="flex" v-if="!accountStore.isAccountEmpty">
+        <router-link :to="{ name: 'login' }">
+          <button @click="logout" class="bg-stone-100 hover:bg-stone-200 transition-colors text-sm font-bold border border-current px-6 py-2 rounded-lg pt-1 mr-4">Выход</button>
+        </router-link>
+        <img src="../assets/avatar3.png" alt="Avatar" class="w-8 h-8 rounded-full mr-1">
+        <p class="text-base mr-10">{{ accountStore.account.username }}</p>
       </div>
-      <div class="flex" v-if="!currentAccountName.length">
+      <div class="flex" v-if="accountStore.isAccountEmpty">
         <router-link :to="{ name: 'login' }">
           <button class="bg-stone-100 hover:bg-stone-200 transition-colors text-sm font-bold border border-current px-6 py-2 rounded-lg pt-1 mr-4">Вход</button>
         </router-link>
@@ -33,6 +36,7 @@
         <a-layout-content
           :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '580px' }"
           :class="{'grid grid-cols-4 gap-10': navbarItems === NavbarItems.ALBUMS}"
+
         >
 
 
@@ -56,25 +60,34 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
 import axios from "axios"
-
+import { Modal } from 'ant-design-vue';
 // Component
 import TrackList from "@/components/TrackList.vue"
 import AlbomItem from "@/components/Albom/AlbomItem.vue"
 import AlbumList from "@/components/Albom/AlbumList.vue"
 import Table from "@/components/Table.vue"
 import AudioPlayer from "@/components/AudioPlayer.vue"
-import Sidebar from "@/components/Sidebar.vue"
-
-import { currentAccountName } from "@/components/Login/loginConst"
+import Sidebar from "@/layout/Sidebar.vue"
 
 // types
 import type { SearchResponseT } from "@/types/music"
 import { NavbarItems } from "@/types/navbar"
 
+import { API_URL } from "@/components/base"
+
+// Store
+import { useAccountStore } from "@/stores/AccoutStore"
+const accountStore = useAccountStore()
+
+// Logout
+
+const logout = () => {
+  localStorage.clear()
+}
 
 const options = {
   method: 'GET',
-  url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
+  url: `${API_URL}/search`,
   params: {q: ''},
   headers: {
     'X-RapidAPI-Key': '7b347da72dmsha047ae5e1a35c7ap1715a4jsneedd69536737',
@@ -120,10 +133,22 @@ const changeMusic = async (title: NavbarItems) => {
   navbarItems.value = title
   await fetchMusic()
 }
+const showInfo = () => {
+  if(accountStore.isAccountEmpty) {
+    info()
+  }
+}
 
+const info = () => {
+  Modal.info({
+    title: 'Напоминание',
+    content: "Пожалуйста, обратите внимание, что некоторые функции, такие как оценивание и оставление комментариев, могут быть недоступны, поскольку вы не авторизованы в своем аккаунте. Для использования этих функций, пожалуйста, войдите в свой аккаунт. [Login: admin]  [Password: 123]",
+  });
+}
 
 // Other
 onMounted(async () => {
+  showInfo()
   await fetchMusic()
 })
 </script>

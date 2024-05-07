@@ -1,5 +1,5 @@
 <template>
-  <a-card hoverable class="w-60" @click="$emit('sendMusic', data)">
+  <a-card hoverable class="w-60" @click="$emit('sendMusic', data), saveAlbumTitle()">
     <template #cover>
       <img
         alt="image of album"
@@ -17,13 +17,12 @@
       </template>
     </a-card-meta>
   </a-card>
-
 </template>
 <script lang="ts" setup>
-
 import { SettingOutlined, EditOutlined, EllipsisOutlined } from '@ant-design/icons-vue';
 import type { SearchResponseT } from '@/types/music';
 import { ref } from 'vue';
+import { albomTitle } from "@/components/Albom/albom";
 
 const props = defineProps<{
   data: SearchResponseT
@@ -31,4 +30,7 @@ const props = defineProps<{
 const disciption = ref<string>("")
 disciption.value = `От ${props.data.artist.name}`
 
+const saveAlbumTitle = () => {
+  albomTitle.value = props.data.album.title
+}
 </script>

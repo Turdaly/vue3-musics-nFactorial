@@ -1,5 +1,7 @@
 <template>
-  <slot name="alert-transition"></slot>
+  <AlertError />
+  <AlertWarning />
+  <AlertSuccess />
   <a-form
     :model="formState"
     name="basic"
@@ -40,21 +42,23 @@
   </a-form>
 </template>
 <script lang="ts" setup>
+import AlertError from "@/components/Login/Base/AlertError.vue"
+import AlertWarning from "@/components/Login/Base/AlertWarning.vue"
+import AlertSuccess from "@/components/Login/Base/AlertSuccess.vue"
 // const
-import { formState, registerAccount, checkAccount } from "@/components/Login/loginConst"
-
-type TButtonAction = 'checkAccount' | 'registerAccount'
+import { formState, registerAccount, routeLogin } from "@/components/Login/loginConst"
+type TButtonAction = 'routeLogin' | 'registerAccount'
 
 const props = defineProps<{
   buttonAction: TButtonAction
 }>()
 
-const chooseButtonAction = () => {
-  if(props.buttonAction === 'checkAccount') {
-    checkAccount()
+const chooseButtonAction = async () => {
+  if(props.buttonAction === 'routeLogin') {
+    await routeLogin()
   }
   else if (props.buttonAction === 'registerAccount') {
-    registerAccount()
+    await registerAccount()
   }
 }
 </script>

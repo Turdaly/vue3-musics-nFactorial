@@ -18,7 +18,7 @@
     <AlbomTableHeader class="mt-16">
       <tbody class="bg-white">
         <tr v-for="track in allInfoAlbum?.tracks.data"
-        class="hover:bg-gray-50 active:bg-gray-200" :class="{'bg-gray-200': track.id === audioId}"
+        class="hover:bg-gray-50 active:bg-sky-200 transition-colors" :class="{'bg-sky-100': track.id === audioId}"
         @click="$emit('showAudio', track), highlightRow(track.id)">
           <td class="px-4 py-4 flex">
             <img :src="music.album.cover_small" alt="img album" class="size-10">
@@ -29,6 +29,7 @@
         </tr>
       </tbody>
     </AlbomTableHeader>
+    <CommentField />
   </div>
 </template>
 
@@ -38,6 +39,8 @@ import axios from "axios";
 import { onMounted, ref } from "vue";
 
 import AlbomTableHeader from "@/components/Albom/AlbomTableHeader.vue"
+import CommentField from "@/components/Comment/CommentField.vue"
+import { API_URL } from "@/components/base";
 // ref
 const allInfoAlbum = ref<AllInfoAlbum>()
 
@@ -45,6 +48,7 @@ const allInfoAlbum = ref<AllInfoAlbum>()
 const props = defineProps<{
   music: SearchResponseT
 }>()
+
 
 // HighlightRow
 const audioId = ref<number>()
@@ -66,7 +70,7 @@ const getTracksTime = () => {
 // Request
 const options = {
   method: 'GET',
-  url: 'https://deezerdevs-deezer.p.rapidapi.com/album/',
+  url: `${API_URL}/album/`,
   headers: {
     'X-RapidAPI-Key': '7b347da72dmsha047ae5e1a35c7ap1715a4jsneedd69536737',
     'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
@@ -78,7 +82,6 @@ const fetchAlbum = async () => {
       options.url += props.music.album.id
       const response = await axios.request(options)
       allInfoAlbum.value = response.data
-      console.log(allInfoAlbum.value)
   } catch (error) {
     console.error(error);
   }
