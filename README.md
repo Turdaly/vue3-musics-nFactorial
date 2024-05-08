@@ -1,4 +1,4 @@
-# vue3-musics
+# vue3-musics-nFactorial
 
 
 ## Документация проекта
@@ -18,7 +18,7 @@ git clone https://github.com/Turdaly/vue3-musics-nFactorial
 ```
 2. Установите зависимости! Перейдите в каталог проекта и установите все зависимости, запустив следующую команду:
 ```sh
-cd vue3-musics
+cd vue3-musics-nFactorial
 ```
 
 ```sh
