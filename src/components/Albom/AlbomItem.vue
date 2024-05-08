@@ -7,7 +7,7 @@
         class="size-72"
       />
       <div class="up__side-info ml-8 flex flex-col justify-center">
-        <RateVue />
+        <RateVue v-if="!accountStore.isAccountEmpty"/>
         <h1 class="text-5xl mt-5">{{ music.album.title }}</h1>
         <div class="flex">
           <img
@@ -64,6 +64,10 @@ import CommentField from "@/components/Comment/CommentField.vue";
 import RateVue from "@/layout/Rate.vue";
 import { API_URL } from "@/components/BaseConst/base";
 import { albomTitle } from "@/components/Albom/albom";
+
+import { useAccountStore } from "@/stores/AccoutStore";
+// Store
+const accountStore = useAccountStore()
 // ref
 const allInfoAlbum = ref<AllInfoAlbum>();
 
