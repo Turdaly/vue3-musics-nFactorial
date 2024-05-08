@@ -38,6 +38,7 @@ declare module 'vue' {
     AListItem: typeof import('ant-design-vue/es')['ListItem']
     AMenu: typeof import('ant-design-vue/es')['Menu']
     AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
+    ARate: typeof import('ant-design-vue/es')['Rate']
     Asd: typeof import('./src/components/Login/Base/asd.vue')['default']
     ASpace: typeof import('ant-design-vue/es')['Space']
     ASubMenu: typeof import('ant-design-vue/es')['SubMenu']

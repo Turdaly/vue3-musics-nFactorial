@@ -14,7 +14,6 @@ const accountStore = useAccountStore()
 export const fetchComment = async (): Promise<Comment[]> => {
   try{
     const response: CommentArray = await axios.get(`${url}`)
-    console.log("comment response.data:",response.data)
     return Array.isArray(response.data) ? response.data : [];
   } catch(err){
     console.log(err)
@@ -24,20 +23,27 @@ dayjs.extend(relativeTime);
 // ----------------didn't finish ------------------------------
 export const postComment = async () => {
   try {
+    getNow()
     await axios.post(`${url}`, {
       username: accountStore.account.username,
       albom_title: albomTitle._value,
       content: value.value,
-      datetime: 'a few seconds ago',
+      datetime: timestamp.value,
     })
+    // Дополнительные действия
     comments.value = await fetchComment()
+    currentComment.value = comments.value
+    setCurrentComment()
   }catch(err){
     console.log(err)
   }
 }
 
 // Comment
+// Сайт алғаш главный беттен ашылған кезде запрос жасап барлық комментарийлерді алып алады
 export const comments = ref<Comment[]>(await fetchComment());
+export const currentComment = ref<Comment[]>({})
+
 export const submitting = ref<boolean>(false);
 export const value = ref<string>(''); // Комментарий Ползьователя
 export const handleSubmit = async () => {
@@ -51,3 +57,16 @@ export const handleSubmit = async () => {
     value.value = '';
   }, 1000);
 };
+
+export const setCurrentComment = () => {
+  currentComment.value = comments.value.filter(comment => comment.albom_title === albomTitle.value)
+}
+// Time
+const timestamp = ref<string>('')
+const getNow = () => {
+  const today = new Date();
+  const date = today.toLocaleDateString();
+  const time = today.toLocaleTimeString();
+  const dateTime = date +' '+ time;
+  timestamp.value = dateTime;
+}

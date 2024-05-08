@@ -6,11 +6,7 @@
         :src="data.album.cover"
       />
     </template>
-    <template #actions>
-      <setting-outlined key="setting" />
-      <edit-outlined key="edit" />
-      <ellipsis-outlined key="ellipsis" />
-    </template>
+
     <a-card-meta :title="data.album.title" :description="disciption">
       <template #avatar>
         <a-avatar :src="data.artist.picture" />
@@ -19,7 +15,7 @@
   </a-card>
 </template>
 <script lang="ts" setup>
-import { SettingOutlined, EditOutlined, EllipsisOutlined } from '@ant-design/icons-vue';
+
 import type { SearchResponseT } from '@/types/music';
 import { ref } from 'vue';
 import { albomTitle } from "@/components/Albom/albom";

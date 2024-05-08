@@ -1,4 +1,3 @@
-
 export interface Option {
   method: string;
   url: string;

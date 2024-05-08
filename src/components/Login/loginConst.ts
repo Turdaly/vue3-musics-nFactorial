@@ -35,6 +35,7 @@ export const onCloseSuccess = () => {
   showAlertSuccess.value = false
 };
 export const onCloseAllAlert = () => {
+
   showAlertError.value = false
   showAlertWarning.value = false
   showAlertSuccess.value = false
