@@ -1,33 +1,52 @@
 # vue3-song
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+## Документация проекта
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Type Support for `.vue` Imports in TS
+### Требования
+Перед началом установки убедитесь, что на вашем компьютере установлены следующие программные средства:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+- Node.js (версия 12 или выше)
+- npm (Node Package Manager)
+- Git
+### Инструкции по установке
+1. Склонируйте репозиторий! Сначала склонируйте репозиторий проекта на свой локальный компьютер с помощью команды:
+```sh
+git clone https://github.com/Turdaly/vue3-musics-nFactorial
+```
+2. Установите зависимости! Перейдите в каталог проекта и установите все зависимости, запустив следующую команду:
+```sh
+cd vue3-musics
+```
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Запустите приложение
 
 ```sh
 npm run dev
 ```
+### Авторизация
+- Login: admin
+- Password: 123
+  
+## ⏬ Процесс проектирования и разработки:
+- Я решил организовать сайт в соответствии с собственной концепцией архитектуры, которая, на мой взгляд, была оптимальной. Для повышения читаемости кода и удобства его использования я объединил некоторые повторяющиеся фрагменты в один файл и использовал его повторно в различных частях проекта. Кроме того, я разделил сайт на несколько компонентов для лучшей организации процесса разработки. Для избежания путаницы и облегчения поддержки кода я организовал файлы в отдельные папки, структурировал их и собрал вместе для удобства работы
 
-### Type-Check, Compile and Minify for Production
+## ⏬ Компромиссы и проблемы:
+- В процессе разработки сайта я воспользовался API-запросом. Однако на ранних этапах столкнулся с рядом трудностей при выборе подходящего API, что заняло больше времени, чем предполагалось. Большинство доступных API не предоставляли полной информации о альбомах, исполнителях и треках, что усложнило интеграцию с моим сайтом. В итоге, я затратил значительное количество времени на работу с данным API, но из-за его ограничений пришлось искать альтернативные пути для реализации функционала музыкального сайта.
+- Из-за ограниченных сроков пришлось сделать выбор в планировании и приоритизации функционала, чтобы сфокусироваться на ключевых возможностях.
 
-```sh
-npm run build
-```
+## ⚙️ Стэк технологий:
+
+- Vue 3
+- Vue Router
+- TypeScript
+- TailwindCSS
+- Axios
+- Pinia
+
