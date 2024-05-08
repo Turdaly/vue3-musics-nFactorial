@@ -2,25 +2,31 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+## Документация проекта
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Type Support for `.vue` Imports in TS
+### Требования
+Перед началом установки убедитесь, что на вашем компьютере установлены следующие программные средства:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+Node.js (версия 12 или выше)
+npm (Node Package Manager)
+Git
+## Инструкции по установке
+1. Склонируйте репозиторий! Сначала склонируйте репозиторий проекта на свой локальный компьютер с помощью команды:
+```sh
+git clone https://github.com/Turdaly/vue3-musics-nFactorial
+```
+2. Установите зависимости! Перейдите в каталог проекта и установите все зависимости, запустив следующую команду:
+```sh
+cd vue3-musics
+```
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Запустите приложение
 
 ```sh
 npm run dev
