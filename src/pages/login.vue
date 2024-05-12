@@ -27,9 +27,7 @@
 <script setup lang="ts">
 import LoginField from "@/components/Login/LoginField.vue";
 import { onCloseAllAlert } from "@/components/Login/loginConst";
-import { fetchArtist } from "@/components/BaseConst/base";
 
-fetchArtist();
 </script>
 
 <style scoped></style>

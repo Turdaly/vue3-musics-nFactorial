@@ -7,6 +7,7 @@
 </template>
 
 <script setup lang="ts">
+// @ts-ignore
 import AudioPlayer from 'vue3-audio-player'
 import 'vue3-audio-player/dist/style.css'
 import type { SearchResponseT } from '@/types/music';

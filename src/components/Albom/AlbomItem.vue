@@ -109,7 +109,6 @@ const fetchAlbum = async () => {
     options.url += props.music.album.id;
     const response = await axios.request(options);
     allInfoAlbum.value = response.data;
-    console.log(albomTitle.value);
   } catch (error) {
     console.error(error);
   }

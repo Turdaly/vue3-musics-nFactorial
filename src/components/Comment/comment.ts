@@ -1,6 +1,4 @@
-import relativeTime from 'dayjs/plugin/relativeTime';
 import axios from "axios"
-import dayjs from 'dayjs';
 import { ref } from 'vue';
 import type { CommentArray, Comment } from "@/components/Comment/types/types"
 import { useAccountStore } from '@/stores/AccoutStore';
@@ -11,7 +9,7 @@ export const url = 'https://50c5b6adc91b4d21.mokky.dev/comments'
 const accountStore = useAccountStore()
 
 // Requests
-export const fetchComment = async (): Promise<Comment[]> => {
+export const fetchComment = async () => {
   try{
     const response: CommentArray = await axios.get(`${url}`)
     return Array.isArray(response.data) ? response.data : [];
@@ -19,19 +17,21 @@ export const fetchComment = async (): Promise<Comment[]> => {
     console.log(err)
   }
 }
-dayjs.extend(relativeTime);
 // ----------------didn't finish ------------------------------
 export const postComment = async () => {
   try {
     getNow()
     await axios.post(`${url}`, {
       username: accountStore.account.username,
-      albom_title: albomTitle._value,
+      albom_title: albomTitle.value,
       content: value.value,
       datetime: timestamp.value,
     })
     // Дополнительные действия
-    comments.value = await fetchComment()
+    const data = await fetchComment()
+    if(data) {
+      comments.value = data
+    }
     currentComment.value = comments.value
     setCurrentComment()
   }catch(err){
@@ -41,8 +41,8 @@ export const postComment = async () => {
 
 // Comment
 // Сайт алғаш главный беттен ашылған кезде запрос жасап барлық комментарийлерді алып алады
-export const comments = ref<Comment[]>(await fetchComment());
-export const currentComment = ref<Comment[]>({})
+export const comments = ref<Comment[]>([]);
+export const currentComment = ref<Comment[]>([])
 
 export const submitting = ref<boolean>(false);
 export const value = ref<string>(''); // Комментарий Ползьователя

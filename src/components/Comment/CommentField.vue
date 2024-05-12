@@ -33,7 +33,7 @@
   </a-comment>
 </template>
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { onMounted} from "vue";
 import { handleSubmit, submitting, value, currentComment, setCurrentComment } from "@/components/Comment/comment"
 import { useAccountStore } from "@/stores/AccoutStore"
 

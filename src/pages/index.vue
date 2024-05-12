@@ -62,7 +62,7 @@
           }"
         >
           <AlbomItem
-            v-if="navbarItems === NavbarItems.ALBOMITEM"
+            v-if="navbarItems === NavbarItems.ALBOMITEM && music"
             :music="music"
             @show-audio="showModal"
             class="mb-28"
@@ -86,7 +86,7 @@
         </a-layout-content>
       </a-layout>
     </a-layout>
-    <AudioPlayer :audio="audio" v-if="showAudio" />
+    <AudioPlayer  v-if="showAudio && audio" :audio="audio"/>
   </a-layout>
 </template>
 <script lang="ts" setup>
@@ -109,9 +109,9 @@ import { API_URL } from "@/components/BaseConst/base";
 
 // Store
 import { useAccountStore } from "@/stores/AccoutStore";
-import { fetchArtist } from "@/components/BaseConst/base"
+
 const accountStore = useAccountStore();
-fetchArtist()
+
 // Logout
 
 const logout = () => {
