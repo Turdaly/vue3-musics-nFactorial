@@ -61,8 +61,8 @@ import { onMounted, ref } from "vue";
 
 import AlbomTableHeader from "@/components/Albom/AlbomTableHeader.vue";
 import CommentField from "@/components/Comment/CommentField.vue";
-import RateVue from "@/layout/Rate.vue";
-import { API_URL } from "@/components/BaseConst/base";
+import RateVue from "@/components/Rate.vue";
+import { API_URL } from "@/utils/api";
 import { albomTitle } from "@/components/Albom/albom";
 
 import { useAccountStore } from "@/stores/AccoutStore";

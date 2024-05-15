@@ -41,6 +41,7 @@ declare module 'vue' {
     CommentField: typeof import('./src/components/Comment/CommentField.vue')['default']
     FormField: typeof import('./src/components/Login/Base/FormField.vue')['default']
     LoginField: typeof import('./src/components/Login/LoginField.vue')['default']
+    Rate: typeof import('./src/components/Rate.vue')['default']
     RegistrationField: typeof import('./src/components/Login/RegistrationField.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

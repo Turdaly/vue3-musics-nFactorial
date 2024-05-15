@@ -1,7 +1,12 @@
-export enum NavbarItems {
+export interface NavbarItems {
+  title: NavbarItem,
+  eng: string
+}
+
+export enum NavbarItem {
   ALBUMS = 'Альбомы',
   GENRES = 'Жанры',
-  NEW = 'Новинки',
+  NEWS = 'Новинки',
   ARTISTS = 'Исполнители',
   TRICS = 'Треки',
   ALBOMITEM = 'albomItem'
